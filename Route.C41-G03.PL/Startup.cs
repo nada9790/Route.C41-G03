@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using Route.C41_G03DAL.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +27,19 @@ namespace Route.C41_G03.PL
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // services.AddTransient<ApplicationDbContext>();
+            services.AddScoped<ApplicationDbContext>();
+            // services.AddSingleton<ApplicationDbContext>();
+
+
+            services.AddScoped<DbContextOptions<ApplicationDbContext>>();
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer("Server=.;Database=MVCApplication-G03;TrustedConnection=True");
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,3 +71,5 @@ namespace Route.C41_G03.PL
         }
     }
 }
+
+
