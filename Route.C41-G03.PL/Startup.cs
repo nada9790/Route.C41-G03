@@ -37,7 +37,9 @@ namespace Route.C41_G03.PL
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefsaultConnection"));
+               
+
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
         }
