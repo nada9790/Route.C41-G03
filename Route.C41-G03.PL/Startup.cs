@@ -21,27 +21,26 @@ namespace Route.C41_G03.PL
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; } = null;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-            // services.AddTransient<ApplicationDbContext>();
-            services.AddScoped<ApplicationDbContext>();
-            // services.AddSingleton<ApplicationDbContext>();
-
-
-            services.AddScoped<DbContextOptions<ApplicationDbContext>>();
-
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-               
-
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+
+            // services.AddTransient<ApplicationDbContext>();
+            //services.AddScoped<ApplicationDbContext>();
+            // services.AddSingleton<ApplicationDbContext>();
+
+
+            //services.AddScoped<DbContextOptions<ApplicationDbContext>>();
+
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
