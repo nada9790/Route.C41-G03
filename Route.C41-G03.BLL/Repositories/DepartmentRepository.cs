@@ -1,4 +1,5 @@
-﻿using Route.C41_G03DAL.Data;
+﻿using Route.C41_G03.BLL.Interface;
+using Route.C41_G03DAL.Data;
 using Route.C41_G03DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Route.C41_G03.BLL.Repositories
 {
-    internal class DepartmentRepository
+    public class DepartmentRepository:IDepartmentRepository
     {
-        private ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public DepartmentRepository(ApplicationDbContext dbContext)
         {
