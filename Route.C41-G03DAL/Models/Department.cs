@@ -14,7 +14,7 @@ namespace Route.C41_G03DAL.Models
         public string Code { get; set; }
         
         public string Name { get; set; }
-
+        [Display (Name= "Date Of Cereation")]
         public DateTime DateOfCereation{ get; set; }= DateTime.Now;
     }
 }

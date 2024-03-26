@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Route.C41_G03.BLL.Interface;
+using Route.C41_G03.BLL.Repositories;
 using Route.C41_G03DAL.Data;
 using System;
 using System.Collections.Generic;
@@ -31,7 +33,7 @@ namespace Route.C41_G03.PL
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
             // services.AddTransient<ApplicationDbContext>();
             //services.AddScoped<ApplicationDbContext>();

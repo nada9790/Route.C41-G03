@@ -6,7 +6,7 @@ namespace Route.C41_G03.PL.Controllers
 {
     public class DepartmentController : Controller
     {
-        private IDepartmentRepository _departmentRepository;
+        private readonly IDepartmentRepository _departmentRepository;
 
         public DepartmentController(IDepartmentRepository departRepository)
         {
