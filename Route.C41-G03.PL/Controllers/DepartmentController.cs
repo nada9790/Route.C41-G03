@@ -1,16 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Route.C41_G03.BLL.Interface;
 using Route.C41_G03DAL.Models;
+using System;
 
 namespace Route.C41_G03.PL.Controllers
 {
     public class DepartmentController : Controller
     {
         private readonly IDepartmentRepository _departmentRepository;
+        private readonly IWebHostEnvironment _env;
 
-        public DepartmentController(IDepartmentRepository departRepository)
+        public DepartmentController(IDepartmentRepository departRepository,IWebHostEnvironment env)
         {
             _departmentRepository = departRepository;
+            _env = env;
         }
         public IActionResult Index()
         {
@@ -34,6 +38,50 @@ namespace Route.C41_G03.PL.Controllers
             }
             return View(department);
         }
+
+        public IActionResult Details(int? id, string ViewName = "Details")
+        {
+            if (id is null) return BadRequest();
+
+            var department = _departmentRepository.GetById(id.Value);
+            if (department is null)
+                return NotFound();
+
+            return View(ViewName, department);
+        }
+        [HttpGet]
+        public IActionResult Edit(int? id)
+            
+        {
+            return Details(id, "Edit");
+            //if(!id.HasValue)
+            //    return BadRequest();
+            //var Department=_departmentRepository.GetById(id.Value);
+            //if (Department is null)
+            //    return NotFound();
+            //return View(Department);
+        }
+        [HttpPost]
+        public IActionResult Edit(Department department)
+        {
+            if ( ModelState.IsValid)
+        
+                return View(department);
+
+            try
+            {
+                _departmentRepository.Update(department);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
+        }
+
 
     }
 }

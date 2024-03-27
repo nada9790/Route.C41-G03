@@ -1,23 +1,23 @@
-﻿  @model Department
+﻿@model Department
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Department Details";
 }
 
-<h1>Create New Department</h1>
+<h1>Department Details</h1>
 <br />
 <br />
-<form asp-action="Create" >
+
 
 <form class="form-group">
     <label class="col-form-label" asp-for="Code"></label>
-    <input asp-for="Code" class="form-control"/>
-    <span asp-validation-for="Code" class=" text-Danger"></span>
+    <input asp-for="Code" class="form-control" readonly/>
+    
 </form>
 
 <form class="form-group">
     <label class="col-form-label" asp-for="Name"></label>
-    <input asp-for="Name" class="form-control" />
-    <span asp-validation-for="Name" class=" text-Danger"></span>
+    <input asp-for="Name" class="form-control" rea/>
+ 
 </form>
 
 <form class="form-group">
@@ -25,8 +25,9 @@
     <input asp-for="DateOfCereation" class="form-control" />
 </form>
 
-<input type="submit" value="Create" class="btn btn-primary"/>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> |
+
 <a asp-action="Index" class="btn btn-light">Back To List</a>
 
-</form>
 
