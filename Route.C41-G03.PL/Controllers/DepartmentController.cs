@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using Route.C41_G03.BLL.Interface;
 using Route.C41_G03DAL.Models;
 using System;
@@ -30,7 +31,7 @@ namespace Route.C41_G03.PL.Controllers
 
         [HttpPost]
         public IActionResult Create(Department department)
-        {
+         {
             if (ModelState.IsValid)
             {
                 _departmentRepository.Add(department);
@@ -38,10 +39,11 @@ namespace Route.C41_G03.PL.Controllers
             }
             return View(department);
         }
-
+        [HttpGet]
         public IActionResult Details(int? id, string ViewName = "Details")
         {
-            if (id is null) return BadRequest();
+            if (!id.HasValue)
+                return BadRequest();
 
             var department = _departmentRepository.GetById(id.Value);
             if (department is null)
@@ -77,7 +79,11 @@ namespace Route.C41_G03.PL.Controllers
             catch (Exception ex)
             {
 
-                throw;
+               if(_env.IsDevelopment())
+                    ModelState.AddModelError(string.Empty, ex.Message);
+               else
+                    ModelState.AddModelError(string.Empty, "An Error Occured during update the department");
+               return View(department);
             }
             
         }

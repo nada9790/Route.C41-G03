@@ -8,25 +8,25 @@
 <br />
 
 
-<form class="form-group">
-    <label class="col-form-label" asp-for="Code"></label>
-    <input asp-for="Code" class="form-control" readonly/>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Code"></label>
+        <input asp-for="Code" class="form-control" readonly/>
     
-</form>
+    </div>
 
-<form class="form-group">
-    <label class="col-form-label" asp-for="Name"></label>
-    <input asp-for="Name" class="form-control" rea/>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" rea/>
  
-</form>
+    </div>
 
-<form class="form-group">
-    <label class="col-form-label" asp-for="DateOfCereation"></label>
-    <input asp-for="DateOfCereation" class="form-control" />
-</form>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="DateOfCereation"></label>
+        <input asp-for="DateOfCereation" class="form-control" />
+    </div>
 
 
-<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> |
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> 
 
 <a asp-action="Index" class="btn btn-light">Back To List</a>
 
