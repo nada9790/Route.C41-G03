@@ -18,13 +18,24 @@ namespace Route.C41_G03DAL.Data
         }
        
 
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.ApplyConfiguration<Department>(new DepartmentConfigurations());
+        //    modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        //}
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration<Department>(new DepartmentConfigurations());
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        }
-        public DbSet<Department> Departments { get; set; }
 
+
+            modelBuilder.Entity<Employee>().HasOne(e => e.department).WithMany(d => d.Employees).HasForeignKey(d => d.DeptId)/*.OnDelete(DeleteBehavior.Cascade)*/;
+
+
+
+
+        }
     }
-}
+  }
  

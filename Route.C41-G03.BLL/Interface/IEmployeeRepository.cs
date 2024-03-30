@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Route.C41_G03.BLL.Interface
 {
-    internal class IEmployeeRepository
+    public interface IEmployeeRepository
     {
         IQueryable GetByAddress(string address);
         IQueryable SearchByName(string Name);

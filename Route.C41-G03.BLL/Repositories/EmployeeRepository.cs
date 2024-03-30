@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Route.C41_G03.BLL.Repositories
 {
-    internal class EmployeeRepository
+    public class EmployeeRepository
     {
         private readonly ApplicationDbContext _dbContext;
 

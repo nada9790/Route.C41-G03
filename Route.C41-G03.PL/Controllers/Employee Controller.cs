@@ -4,9 +4,9 @@ using Route.C41_G03DAL.Models;
 
 namespace Route.C41_G03.PL.Controllers
 {
-    public class Employee_Controller : Controller
+    public class EmployeeController : Controller
     {
-        private IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeRepository _employeeRepository;
         private readonly IDepartmentRepository departmentRepository;
 
         public EmployeeController(IEmployeeRepository employeeRepository, IDepartmentRepository departmentRepository)
