@@ -23,6 +23,10 @@ namespace Route.C41_G03DAL.Data
         //    modelBuilder.ApplyConfiguration<Department>(new DepartmentConfigurations());
         //    modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         //}
+       
+
+       
+
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
 
