@@ -7,17 +7,9 @@ using System.Threading.Tasks;
 
 namespace Route.C41_G03.BLL.Interface
 {
-    public  interface IDepartmentRepository
+    public  interface IDepartmentRepository:IGenericRepositorycs<Department>
     {
 
-        IEnumerable<Department> GetAll();
-
-        Department GetById(int id);
-
-        int Add(Department department);
-
-        int Update(Department department);
-
-        int Delete(Department department);
+       
     }
 }

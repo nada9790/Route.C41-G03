@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Route.C41_G03DAL.Data.Configurations;
 using Route.C41_G03DAL.Models;
 using System;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Route.C41_G03DAL.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser,IdentityRole,string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options) : base(options)
         {
@@ -29,10 +31,14 @@ namespace Route.C41_G03DAL.Data
 
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        //public DbSet<IdentityUser<Guid>> Users{ get; set; }
+        //public DbSet<IdentityRole> Roles { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Employee>().HasOne(e => e.department).WithMany(d => d.Employees).HasForeignKey(d => d.DeptId)/*.OnDelete(DeleteBehavior.Cascade)*/;
 

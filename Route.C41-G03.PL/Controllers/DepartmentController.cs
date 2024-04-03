@@ -45,7 +45,7 @@ namespace Route.C41_G03.PL.Controllers
             if (!id.HasValue)
                 return BadRequest();
 
-            var department = _departmentRepository.GetById(id.Value);
+             var department = _departmentRepository.Get(id.Value);
             if (department is null)
                 return NotFound();
 
@@ -53,7 +53,7 @@ namespace Route.C41_G03.PL.Controllers
         }
         [HttpGet]
         public IActionResult Edit(int? id)
-            
+
         {
             return Details(id, "Edit");
             //if(!id.HasValue)

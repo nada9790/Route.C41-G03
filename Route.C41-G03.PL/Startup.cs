@@ -34,6 +34,8 @@ namespace Route.C41_G03.PL
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
 
             // services.AddTransient<ApplicationDbContext>();
             //services.AddScoped<ApplicationDbContext>();
@@ -42,7 +44,7 @@ namespace Route.C41_G03.PL
 
             //services.AddScoped<DbContextOptions<ApplicationDbContext>>();
 
-          
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
